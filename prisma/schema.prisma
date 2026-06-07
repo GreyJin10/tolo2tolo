@@ -1,5 +1,5 @@
 // Fashion Store - Database Schema
-// SQLite (swap to PostgreSQL in production)
+// PostgreSQL (Neon Serverless)
 
 generator client {
   provider = "prisma-client"
@@ -7,7 +7,7 @@ generator client {
 }
 
 datasource db {
-  provider = "sqlite"
+  provider = "postgresql"
 }
 
 // ─── USER ────────────────────────────────────────────
