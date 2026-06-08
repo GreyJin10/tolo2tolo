@@ -4,7 +4,7 @@ import type { NextRequest } from "next/server";
 // Simple middleware that checks for NextAuth session cookie
 // This avoids importing Prisma/auth which uses Node.js modules
 // and would fail in Edge Runtime
-export function middleware(req: NextRequest) {
+export function proxy(req: NextRequest) {
   const { pathname } = req.nextUrl;
 
   // Protected routes
