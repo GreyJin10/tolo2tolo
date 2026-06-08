@@ -24,6 +24,7 @@ interface CategoryData {
   id: string;
   name: string;
   slug: string;
+  imageUrl?: string;
 }
 
 export default function HomePage() {
@@ -112,7 +113,7 @@ export default function HomePage() {
       <ScrollReveal>
       <section className="grid grid-cols-1 lg:grid-cols-2 min-h-[320px] lg:min-h-[480px]">
         <div className="bg-[#0a0a0a] flex items-center justify-center min-h-[320px] lg:min-h-[480px] relative overflow-hidden">
-          <img src="/editorial-1.jpg" alt="Editorial" className="absolute inset-0 w-full h-full object-cover opacity-70" />
+          <img src="/models/0c4c2b25ctc8b56de277e0076c6c5d4bitem.JPG" alt="Editorial" className="absolute inset-0 w-full h-full object-cover opacity-70" />
           <span className="absolute top-6 lg:top-12 left-6 lg:left-12 text-[10px] tracking-[3px] uppercase text-white/50 font-[family-name:var(--font-sans)] z-10">
             {t("editorial.number")}
           </span>
@@ -159,13 +160,16 @@ export default function HomePage() {
               return (
                 <Link key={cat.id} href={`/categories/${cat.slug}`}
                   className="flex-[0_0_70%] sm:flex-[0_0_36%] lg:flex-1 aspect-[2/3] bg-[#e0ded8] relative overflow-hidden cursor-pointer flex items-end transition-[flex] duration-500 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] lg:hover:flex-[1.6] group snap-start">
-                  <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/70 opacity-0 lg:group-hover:opacity-100 transition-opacity duration-400" />
+                  {cat.imageUrl && (
+                    <img src={cat.imageUrl} alt={cat.name} className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 lg:group-hover:scale-105" />
+                  )}
+                  <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/60 opacity-60 lg:group-hover:opacity-80 transition-opacity duration-400" />
                   <div className="absolute inset-0 flex items-center justify-center">
-                    <span className="font-[family-name:var(--font-heading)] text-[clamp(36px,12vw,80px)] text-black/[0.06] select-none">
+                    <span className="font-[family-name:var(--font-heading)] text-[clamp(36px,12vw,80px)] text-white/[0.08] select-none">
                       {letters[i] || cat.name.charAt(0)}
                     </span>
                   </div>
-                  <span className="absolute top-4 left-4 text-[10px] tracking-[2px] text-black/25 font-[family-name:var(--font-sans)]">
+                  <span className="absolute top-4 left-4 text-[10px] tracking-[2px] text-white/40 font-[family-name:var(--font-sans)]">
                     {"0" + (i + 1)}
                   </span>
                   <div className="relative z-10 p-5 lg:opacity-0 lg:translate-y-2 lg:group-hover:opacity-100 lg:group-hover:translate-y-0 transition-all duration-400 delay-100 text-white">

@@ -1,10 +1,31 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+
+const HERO_IMAGES = [
+  "/models/663549c36m04547a7bc48cce89931fd1item.JPG",
+  "/models/0c4c2b25ctc8b56de277e0076c6c5d4bitem.JPG",
+  "/models/6871c4873u719423c7ca0d7fa083737aitem.JPG",
+];
 
 export function HeroCarousel() {
   const [mouse, setMouse] = useState({ x: 0, y: 0 });
+  const [current, setCurrent] = useState(0);
+  const [next, setNext] = useState(1);
+  const [fading, setFading] = useState(false);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setFading(true);
+      setTimeout(() => {
+        setCurrent((prev) => (prev + 1) % HERO_IMAGES.length);
+        setNext((prev) => (prev + 1) % HERO_IMAGES.length);
+        setFading(false);
+      }, 800);
+    }, 5000);
+    return () => clearInterval(timer);
+  }, []);
 
   return (
     <section
@@ -16,28 +37,16 @@ export function HeroCarousel() {
         setMouse({ x, y });
       }}
     >
-      {/* Background watermark text — parallax */}
-      <div
-        className="absolute font-[family-name:var(--font-heading)] text-[clamp(120px,18vw,240px)] text-white/[0.035] whitespace-nowrap select-none tracking-[-8px]"
-        style={{
-          top: "50%",
-          left: "50%",
-          transform: `translate(calc(-50% + ${mouse.x}px), calc(-50% + ${mouse.y}px))`,
-          transition: "transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)",
-        }}
-      >
-        TOLO2TOLO
-      </div>
-
       {/* Background image — slow parallax */}
       <div
-        className="absolute inset-0 opacity-25 mix-blend-luminosity"
+        className="absolute inset-0 opacity-25 mix-blend-luminosity transition-opacity duration-800"
         style={{
-          backgroundImage: "url(/hero-bg.jpg)",
+          backgroundImage: `url(${HERO_IMAGES[current]})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
+          opacity: fading ? 0.15 : 0.25,
           transform: `translate(${mouse.x * -0.3}px, ${mouse.y * -0.3}px) scale(1.05)`,
-          transition: "transform 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94)",
+          transition: "transform 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.8s ease-in-out",
         }}
       />
 
@@ -79,6 +88,19 @@ export function HeroCarousel() {
             </button>
           </Link>
         </div>
+      </div>
+
+      {/* Carousel dots */}
+      <div className="absolute bottom-[60px] lg:bottom-[80px] left-1/2 -translate-x-1/2 flex gap-3 z-10">
+        {HERO_IMAGES.map((_, i) => (
+          <button
+            key={i}
+            onClick={() => { setCurrent(i); setNext((i + 1) % HERO_IMAGES.length); }}
+            className={`w-1.5 h-1.5 rounded-full transition-all duration-300 ${
+              i === current ? "bg-white w-6" : "bg-white/30 hover:bg-white/50"
+            }`}
+          />
+        ))}
       </div>
 
       {/* Scroll indicator */}
