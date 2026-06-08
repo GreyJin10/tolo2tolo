@@ -77,19 +77,19 @@ async function main() {
 
   // ─── Categories ──────────────────────────────────────
   const tops = await prisma.category.create({
-    data: { name: "Tops", slug: "tops", description: "Shirts, tees, knits and more", imageUrl: "/models/663549c36m04547a7bc48cce89931fd1item.JPG", sortOrder: 1 },
+    data: { name: "Tops", slug: "tops", description: "Shirts, tees, knits and more", imageUrl: "/models/0c4c2b25ctc8b56de277e0076c6c5d4bitem.JPG", sortOrder: 1 },
   });
   const bottoms = await prisma.category.create({
-    data: { name: "Bottoms", slug: "bottoms", description: "Trousers, skirts and shorts", imageUrl: "/models/6871c4873u719423c7ca0d7fa083737aitem.JPG", sortOrder: 2 },
+    data: { name: "Bottoms", slug: "bottoms", description: "Trousers, skirts and shorts", imageUrl: "/models/1a04ec3c79664f5f61a9ca11997285ceitem.JPG", sortOrder: 2 },
   });
   const dresses = await prisma.category.create({
-    data: { name: "Dresses", slug: "dresses", description: "Day dresses, evening and everything between", imageUrl: "/models/0c4c2b25ctc8b56de277e0076c6c5d4bitem.JPG", sortOrder: 3 },
+    data: { name: "Dresses", slug: "dresses", description: "Day dresses, evening and everything between", imageUrl: "/models/图片_20260324155418_35727_2.jpg", sortOrder: 3 },
   });
   const outerwear = await prisma.category.create({
     data: { name: "Outerwear", slug: "outerwear", description: "Jackets, coats and layering pieces", imageUrl: "/models/ad4e69e03939e9c2312fd4e30b611ab8item.JPG", sortOrder: 4 },
   });
   const accessories = await prisma.category.create({
-    data: { name: "Accessories", slug: "accessories", description: "Bags, belts and finishing touches", imageUrl: "/models/a020ecb8dcfb816ac5ba44361e7a4b6bitem.JPG", sortOrder: 5 },
+    data: { name: "Accessories", slug: "accessories", description: "Bags, belts and finishing touches", imageUrl: "/models/图片_20260324155417_35726_2.jpg", sortOrder: 5 },
   });
 
   console.log("✅ Categories created");

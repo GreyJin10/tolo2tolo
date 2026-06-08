@@ -113,7 +113,7 @@ export default function HomePage() {
       <ScrollReveal>
       <section className="grid grid-cols-1 lg:grid-cols-2 min-h-[320px] lg:min-h-[480px]">
         <div className="bg-[#0a0a0a] flex items-center justify-center min-h-[320px] lg:min-h-[480px] relative overflow-hidden">
-          <img src="/models/0c4c2b25ctc8b56de277e0076c6c5d4bitem.JPG" alt="Editorial" className="absolute inset-0 w-full h-full object-cover opacity-70" />
+          <img src="/models/2fc3142ca3fb6c48df6cc4be95480944item.JPG" alt="Editorial" className="absolute inset-0 w-full h-full object-cover opacity-70" />
           <span className="absolute top-6 lg:top-12 left-6 lg:left-12 text-[10px] tracking-[3px] uppercase text-white/50 font-[family-name:var(--font-sans)] z-10">
             {t("editorial.number")}
           </span>
@@ -203,6 +203,48 @@ export default function HomePage() {
         </section>
         </ScrollReveal>
       )}
+
+      {/* Lookbook Gallery */}
+      <ScrollReveal delay={300}>
+      <section className="px-4 lg:px-12 py-16 lg:py-[120px] bg-[#f5f4f0]">
+        <SectionHeader
+          title="The Lookbook"
+          subtitle="SS 2026 Editorial"
+          href="/products?sort=newest"
+        />
+        <div className="columns-2 lg:columns-3 gap-[2px]">
+          {[
+            "/models/图片_20260324134104_35639_2.jpg",
+            "/models/7f245ee79444875906f77c4ba3efd5f6item.JPG",
+            "/models/图片_20260324155417_35726_2.jpg",
+            "/models/f0d70a4cdb34d7d62c35e8b946e5a27ditem.JPG",
+            "/models/图片_20260324134114_35647_2.jpg",
+            "/models/9dbe507cd0293950694bb0b70a2ed6d8item.JPG",
+            "/models/图片_20260324134107_35642_2.jpg",
+            "/models/292859item.JPG",
+            "/models/图片_20260324134119_35649_2.jpg",
+            "/models/a020ecb8dcfb816ac5ba44361e7a4b6bitem.JPG",
+            "/models/图片_20260324134112_35646_2.jpg",
+            "/models/图片_20260324134110_35644_2.jpg",
+            "/models/图片_20260324134056_35633_2.jpg",
+            "/models/图片_20260324134053_35631_2.jpg",
+            "/models/图片_20260324155415_35725_2.jpg",
+            "/models/图片_20260324155418_35727_2.jpg",
+            "/models/6871c4873u719423c7ca0d7fa083737aitem.JPG",
+          ].map((src, i) => (
+            <div key={src} className="break-inside-avoid mb-[2px] relative group cursor-pointer overflow-hidden">
+              <img
+                src={src}
+                alt={`Lookbook ${i + 1}`}
+                className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105"
+                loading="lazy"
+              />
+              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/15 transition-colors duration-400" />
+            </div>
+          ))}
+        </div>
+      </section>
+      </ScrollReveal>
     </div>
   );
 }
