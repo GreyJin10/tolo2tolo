@@ -28,7 +28,7 @@ export function HeroCarousel() {
   }, []);
 
   return (
-    <section className="relative h-screen flex items-end overflow-hidden bg-[#0a0a0a]">
+    <section className="relative h-screen flex items-end overflow-hidden bg-[#0c0c0c]">
       {/* Background images */}
       {HERO_IMAGES.map((img, i) => (
         <div
@@ -52,7 +52,7 @@ export function HeroCarousel() {
       />
 
       {/* Bottom gradient — cleaner, less heavy */}
-      <div className="absolute inset-x-0 bottom-0 h-3/5 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/55 to-transparent pointer-events-none" />
+      <div className="absolute inset-x-0 bottom-0 h-3/5 bg-gradient-to-t from-[#0c0c0c] via-[#0c0c0c]/55 to-transparent pointer-events-none" />
 
       {/* Content */}
       <div className="relative z-10 max-w-[640px] px-6 lg:px-12 pb-[80px] lg:pb-[100px]">
@@ -74,7 +74,7 @@ export function HeroCarousel() {
         <div className="flex flex-col sm:flex-row gap-3 sm:gap-5 items-start sm:items-center">
           <MagneticButton>
             <Link href="/products">
-              <button className="bg-white text-[#0a0a0a] px-10 py-[14px] font-[family-name:var(--font-sans)] text-[11px] tracking-[3px] uppercase border-0 cursor-pointer transition-all duration-300 hover:bg-[#b5a48a] hover:text-white">
+              <button className="bg-white text-[#0c0c0c] px-10 py-[14px] font-[family-name:var(--font-sans)] text-[11px] tracking-[3px] uppercase border-0 cursor-pointer transition-all duration-300 hover:bg-[#b5a48a] hover:text-white">
                 Shop Now
               </button>
             </Link>

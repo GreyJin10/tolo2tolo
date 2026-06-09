@@ -29,11 +29,11 @@ export default function WishlistPage() {
 
   return (
     <div className="pt-16">
-      <div className="px-4 lg:px-12 py-12 lg:py-16 border-b border-[#0a0a0a]/8">
+      <div className="px-4 lg:px-12 py-12 lg:py-16 border-b border-[#0c0c0c]/8">
         <p className="text-[10px] tracking-[4px] uppercase text-[#888] mb-3 font-[family-name:var(--font-sans)]">
           Saved Items
         </p>
-        <h1 className="font-[family-name:var(--font-heading)] text-[clamp(28px,5vw,56px)] tracking-[-2px] leading-none text-[#0a0a0a]">
+        <h1 className="font-[family-name:var(--font-heading)] text-[clamp(28px,5vw,56px)] tracking-[-2px] leading-none text-[#0c0c0c]">
           My Wishlist
         </h1>
       </div>
@@ -41,8 +41,8 @@ export default function WishlistPage() {
       <div className="px-4 lg:px-12 py-8 lg:py-12">
       {products.length === 0 ? (
         <div className="flex flex-col items-center justify-center py-32">
-          <Heart className="h-16 w-16 text-[#0a0a0a]/10 mb-4" />
-          <p className="font-[family-name:var(--font-heading)] text-[clamp(28px,4vw,48px)] tracking-[-1.5px] text-[#0a0a0a]/20 mb-4">Your wishlist is empty</p>
+          <Heart className="h-16 w-16 text-[#0c0c0c]/10 mb-4" />
+          <p className="font-[family-name:var(--font-heading)] text-[clamp(28px,4vw,48px)] tracking-[-1.5px] text-[#0c0c0c]/20 mb-4">Your wishlist is empty</p>
           <Link href="/products">
             <Button className="rounded-none px-8">Discover Products</Button>
           </Link>

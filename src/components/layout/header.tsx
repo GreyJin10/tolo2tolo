@@ -44,7 +44,7 @@ export function Header() {
       <nav
         className={`flex items-center justify-between px-6 lg:px-14 h-[60px] transition-all duration-700 ${
           scrolled
-            ? "bg-[#0a0a0a]/95 backdrop-blur-md border-b border-white/[0.06]"
+            ? "bg-[#0c0c0c]/95 backdrop-blur-md border-b border-white/[0.06]"
             : "bg-transparent border-b border-transparent"
         }`}
       >
@@ -53,9 +53,7 @@ export function Header() {
           href="/"
           className="font-[family-name:var(--font-heading)] text-[15px] tracking-[7px] text-white/90 hover:text-white/40 transition-all duration-700 uppercase select-none"
         >
-          Tolo
-          <span className="mx-[4px] opacity-20 font-light" style={{ fontSize: "10px", letterSpacing: "2px" }}>×</span>
-          Tolo
+          TOLO2TOLO
         </Link>
 
         {/* ── Desktop nav — 3 items, absolutely centered ──── */}
@@ -133,7 +131,7 @@ export function Header() {
             </SheetTrigger>
 
             {/* Drawer — opens from RIGHT, dark ─────────────── */}
-            <SheetContent side="right" className="w-[300px] bg-[#0a0a0a] border-l border-white/[0.06] p-0">
+            <SheetContent side="right" className="w-[300px] bg-[#0c0c0c] border-l border-white/[0.06] p-0">
               <div className="flex flex-col h-full">
                 {/* Drawer header */}
                 <div className="px-8 pt-10 pb-8" style={{ borderBottom: "0.5px solid rgba(245,244,240,0.06)" }}>
@@ -141,7 +139,7 @@ export function Header() {
                     className="font-[family-name:var(--font-heading)] text-white uppercase"
                     style={{ fontSize: "14px", letterSpacing: "7px" }}
                   >
-                    Tolo<span style={{ opacity: 0.2, fontSize: "10px", margin: "0 4px" }}>×</span>Tolo
+                    TOLO2TOLO
                   </span>
                 </div>
 

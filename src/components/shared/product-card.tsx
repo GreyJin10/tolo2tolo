@@ -101,7 +101,7 @@ export function ProductCard({ product, index, large }: ProductCardProps) {
 
           {/* Sale badge */}
           {discount > 0 && (
-            <Badge className="absolute top-3 right-3 bg-[#0a0a0a] hover:bg-[#0a0a0a] text-white border-0 text-[9px] tracking-[1.5px] uppercase font-[family-name:var(--font-sans)] rounded-none z-10">
+            <Badge className="absolute top-3 right-3 bg-[#0c0c0c] hover:bg-[#0c0c0c] text-white border-0 text-[9px] tracking-[1.5px] uppercase font-[family-name:var(--font-sans)] rounded-none z-10">
               -{discount}%
             </Badge>
           )}
@@ -115,13 +115,13 @@ export function ProductCard({ product, index, large }: ProductCardProps) {
           >
             <Heart
               className={`h-3.5 w-3.5 transition-all duration-300 ${
-                liked ? "fill-[#b5a48a] text-[#b5a48a]" : "text-[#0a0a0a]"
+                liked ? "fill-[#b5a48a] text-[#b5a48a]" : "text-[#0c0c0c]"
               }`}
             />
           </button>
 
           {/* Quick view bar — slides up on hover */}
-          <div className="absolute inset-x-0 bottom-0 bg-[#0a0a0a]/85 backdrop-blur-sm py-3 translate-y-full group-hover:translate-y-0 transition-transform duration-400 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] z-10 flex items-center justify-center gap-2">
+          <div className="absolute inset-x-0 bottom-0 bg-[#0c0c0c]/85 backdrop-blur-sm py-3 translate-y-full group-hover:translate-y-0 transition-transform duration-400 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] z-10 flex items-center justify-center gap-2">
             <Plus className="h-3 w-3 text-white/60" />
             <span className="text-[10px] tracking-[3px] uppercase text-white/80 font-[family-name:var(--font-sans)]">
               Quick Add
@@ -133,7 +133,7 @@ export function ProductCard({ product, index, large }: ProductCardProps) {
       {/* Info */}
       <div className="pt-4 pb-5 bg-[#f5f4f0]">
         <Link href={`/products/${product.slug}`} className="block">
-          <h3 className="font-[family-name:var(--font-heading)] text-[17px] tracking-[-0.5px] text-[#0a0a0a] leading-snug">
+          <h3 className="font-[family-name:var(--font-heading)] text-[17px] tracking-[-0.5px] text-[#0c0c0c] leading-snug">
             {product.name}
           </h3>
         </Link>
@@ -158,11 +158,11 @@ export function ProductCard({ product, index, large }: ProductCardProps) {
         )}
 
         {/* Divider */}
-        <div className="w-6 h-px bg-[#0a0a0a]/12 my-2.5" />
+        <div className="w-6 h-px bg-[#0c0c0c]/12 my-2.5" />
 
         {/* Price */}
         <div className="flex items-center gap-3">
-          <span className="text-[12px] tracking-[2px] text-[#0a0a0a] font-[family-name:var(--font-sans)]">
+          <span className="text-[12px] tracking-[2px] text-[#0c0c0c] font-[family-name:var(--font-sans)]">
             ¥{product.basePrice.toLocaleString()}
           </span>
           {product.compareAtPrice && (

@@ -9,7 +9,7 @@ export function ProductCardSkeleton() {
           <div className="w-2 h-2 rounded-full skeleton-shimmer" />
           <div className="w-2 h-2 rounded-full skeleton-shimmer" />
         </div>
-        <div className="w-6 h-px bg-[#0a0a0a]/12 my-2" />
+        <div className="w-6 h-px bg-[#0c0c0c]/12 my-2" />
         <div className="h-4 w-20 skeleton-shimmer rounded" />
       </div>
     </div>

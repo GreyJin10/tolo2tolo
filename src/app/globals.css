@@ -50,13 +50,13 @@
 
 :root {
   /* TOLO2TOLO design tokens */
-  --tolo-black: #0a0a0a;
+  --tolo-black: #0c0c0c;
   --tolo-white: #f5f4f0;
   --tolo-gray: #888;
   --tolo-accent: #b5a48a;
 
   /* shadcn/ui mapping */
-  --background: #0a0a0a;
+  --background: #0c0c0c;
   --foreground: #f5f4f0;
   --card: oklch(0.97 0.005 90);
   --card-foreground: oklch(0.08 0 0);
@@ -144,7 +144,7 @@
   /* Selection color — brand accent */
   ::selection {
     background: #c8b89a;
-    color: #0a0a0a;
+    color: #0c0c0c;
   }
 
   /* Minimal scrollbar */
@@ -155,11 +155,11 @@
     background: transparent;
   }
   ::-webkit-scrollbar-thumb {
-    background: #0a0a0a20;
+    background: #0c0c0c20;
     border-radius: 2px;
   }
   ::-webkit-scrollbar-thumb:hover {
-    background: #0a0a0a50;
+    background: #0c0c0c50;
   }
 
   /* Explicit cursor for interactive elements */

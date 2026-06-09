@@ -28,8 +28,8 @@ export function MobileNav() {
               href={link.href}
               className={`relative flex flex-col items-center justify-center gap-0.5 min-w-[64px] py-1 transition-colors font-[family-name:var(--font-sans)] ${
                 isActive
-                  ? "text-[#0a0a0a]"
-                  : "text-[#888] hover:text-[#0a0a0a]"
+                  ? "text-[#0c0c0c]"
+                  : "text-[#888] hover:text-[#0c0c0c]"
               }`}
             >
               <Icon className="h-5 w-5" />
@@ -37,7 +37,7 @@ export function MobileNav() {
                 {link.label}
               </span>
               {link.label === "Cart" && cartCount > 0 && (
-                <span className="absolute -top-0.5 right-1/4 min-w-[16px] h-4 flex items-center justify-center bg-[#0a0a0a] text-white text-[9px] font-[family-name:var(--font-sans)] rounded-full px-1">
+                <span className="absolute -top-0.5 right-1/4 min-w-[16px] h-4 flex items-center justify-center bg-[#0c0c0c] text-white text-[9px] font-[family-name:var(--font-sans)] rounded-full px-1">
                   {cartCount > 9 ? "9+" : cartCount}
                 </span>
               )}

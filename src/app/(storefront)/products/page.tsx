@@ -68,7 +68,7 @@ export default async function ProductsPage({ searchParams }: ProductsPageProps) 
 
   return (
     // ── Dark background — full page ──────────────────────────────────────────
-    <div className="pt-[60px]" style={{ background: "#0a0a0a", minHeight: "100vh" }}>
+    <div className="pt-[60px]" style={{ background: "#0c0c0c", minHeight: "100vh" }}>
 
       {/* ── Page header ─────────────────────────────────────────────────────── */}
       <div

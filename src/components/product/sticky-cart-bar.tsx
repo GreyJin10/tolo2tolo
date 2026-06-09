@@ -65,7 +65,7 @@ export function StickyCartBar({ variantId, price }: StickyCartBarProps) {
           paddingLeft:  "32px",
           paddingRight: "32px",
           background:   !variantId || loading ? "rgba(245,244,240,0.06)" : "#f5f4f0",
-          color:        !variantId || loading ? "rgba(245,244,240,0.2)" : "#0a0a0a",
+          color:        !variantId || loading ? "rgba(245,244,240,0.2)" : "#0c0c0c",
           border:       "none",
           fontSize:     "8px",
           letterSpacing:"4px",

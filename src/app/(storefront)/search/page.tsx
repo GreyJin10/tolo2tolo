@@ -38,11 +38,11 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
   return (
     <div className="pt-16">
       {/* Page header */}
-      <div className="px-4 lg:px-12 py-12 lg:py-16 border-b border-[#0a0a0a]/8">
+      <div className="px-4 lg:px-12 py-12 lg:py-16 border-b border-[#0c0c0c]/8">
         <p className="text-[10px] tracking-[4px] uppercase text-[#888] mb-3 font-[family-name:var(--font-sans)]">
           {query ? "Results" : "Search"}
         </p>
-        <h1 className="font-[family-name:var(--font-heading)] text-[clamp(28px,5vw,64px)] tracking-[-2px] leading-none text-[#0a0a0a]">
+        <h1 className="font-[family-name:var(--font-heading)] text-[clamp(28px,5vw,64px)] tracking-[-2px] leading-none text-[#0c0c0c]">
           {query ? `"${query}"` : "Search Products"}
         </h1>
         {query && (
@@ -64,10 +64,10 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
 
         {query && products.length === 0 && (
           <div className="flex flex-col items-center justify-center py-32">
-            <p className="font-[family-name:var(--font-heading)] text-[clamp(28px,4vw,48px)] tracking-[-1.5px] text-[#0a0a0a]/20 mb-4">
+            <p className="font-[family-name:var(--font-heading)] text-[clamp(28px,4vw,48px)] tracking-[-1.5px] text-[#0c0c0c]/20 mb-4">
               Nothing found
             </p>
-            <p className="text-[11px] tracking-[2px] uppercase text-[#0a0a0a]/30 font-[family-name:var(--font-sans)]">
+            <p className="text-[11px] tracking-[2px] uppercase text-[#0c0c0c]/30 font-[family-name:var(--font-sans)]">
               Try different keywords or browse all categories
             </p>
           </div>
@@ -75,10 +75,10 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
 
         {!query && (
           <div className="flex flex-col items-center justify-center py-32">
-            <p className="font-[family-name:var(--font-heading)] text-[clamp(28px,4vw,48px)] tracking-[-1.5px] text-[#0a0a0a]/20 mb-4">
+            <p className="font-[family-name:var(--font-heading)] text-[clamp(28px,4vw,48px)] tracking-[-1.5px] text-[#0c0c0c]/20 mb-4">
               What are you looking for?
             </p>
-            <p className="text-[11px] tracking-[2px] uppercase text-[#0a0a0a]/30 font-[family-name:var(--font-sans)]">
+            <p className="text-[11px] tracking-[2px] uppercase text-[#0c0c0c]/30 font-[family-name:var(--font-sans)]">
               Enter a keyword to search
             </p>
           </div>

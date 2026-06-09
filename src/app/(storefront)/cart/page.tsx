@@ -201,7 +201,7 @@ export default function CartPage() {
           <div className="sticky top-24 rounded-lg border bg-card p-6 space-y-4">
             {/* Free shipping progress */}
             {cart.total < 299 ? (
-              <div className="space-y-1.5 pb-3 border-b border-[#0a0a0a]/8">
+              <div className="space-y-1.5 pb-3 border-b border-[#0c0c0c]/8">
                 <p className="text-[10px] tracking-[2px] uppercase text-[#888] font-[family-name:var(--font-sans)]">
                   Free shipping — ¥{299 - cart.total} away
                 </p>
@@ -213,7 +213,7 @@ export default function CartPage() {
                 </div>
               </div>
             ) : (
-              <div className="pb-3 border-b border-[#0a0a0a]/8">
+              <div className="pb-3 border-b border-[#0c0c0c]/8">
                 <p className="text-[10px] tracking-[2px] uppercase text-[#b5a48a] font-[family-name:var(--font-sans)]">
                   ✓ Free shipping unlocked
                 </p>

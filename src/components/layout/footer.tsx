@@ -25,7 +25,7 @@ export function Footer() {
   }
 
   return (
-    <footer className="bg-[#0a0a0a] text-[#f5f4f0] border-t border-white/10">
+    <footer className="bg-[#0c0c0c] text-[#f5f4f0] border-t border-white/10">
       {/* Main grid */}
       <div className="px-6 lg:px-12 py-20 grid grid-cols-1 lg:grid-cols-[1.2fr_1fr_1fr_1.1fr] gap-12 lg:gap-16">
         {/* Left — brand */}

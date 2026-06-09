@@ -65,7 +65,7 @@ function LoginContent() {
     <div className="min-h-[80vh] flex items-center justify-center px-4">
       <Card className="w-full max-w-md">
         <CardHeader className="space-y-1 text-center">
-          <Link href="/" className="flex items-center justify-center font-[family-name:var(--font-heading)] text-[22px] tracking-[-0.5px] mb-2 text-[#0a0a0a]">
+          <Link href="/" className="flex items-center justify-center font-[family-name:var(--font-heading)] text-[22px] tracking-[-0.5px] mb-2 text-[#0c0c0c]">
             tolo2tolo
           </Link>
           <CardTitle className="text-2xl">{t("auth.signIn")}</CardTitle>

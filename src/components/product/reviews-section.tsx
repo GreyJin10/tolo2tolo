@@ -85,7 +85,7 @@ export function ReviewsSection({ productId }: { productId: string }) {
 
   return (
     <section className="mt-16">
-      <h2 className="font-[family-name:var(--font-heading)] text-[clamp(24px,3vw,36px)] tracking-[-1px] mb-10 text-[#0a0a0a]">Reviews</h2>
+      <h2 className="font-[family-name:var(--font-heading)] text-[clamp(24px,3vw,36px)] tracking-[-1px] mb-10 text-[#0c0c0c]">Reviews</h2>
 
       {/* Summary */}
       {data && (

@@ -68,7 +68,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
 
   return (
     // ── Full dark page ────────────────────────────────────────────────────────
-    <div style={{ background: "#0a0a0a", minHeight: "100vh", paddingTop: "60px" }}>
+    <div style={{ background: "#0c0c0c", minHeight: "100vh", paddingTop: "60px" }}>
 
       {/* ── Breadcrumb ────────────────────────────────────────────────────────── */}
       <nav

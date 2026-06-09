@@ -115,7 +115,7 @@ export function AddToCartButton({ variantId, maxQuantity }: AddToCartButtonProps
         style={{
           height:       "52px",
           background:   notSelected || loading ? "rgba(245,244,240,0.08)" : "#f5f4f0",
-          color:        notSelected || loading ? "rgba(245,244,240,0.2)" : "#0a0a0a",
+          color:        notSelected || loading ? "rgba(245,244,240,0.2)" : "#0c0c0c",
           border:       "none",
           fontSize:     "9px",
           letterSpacing:"4px",
@@ -133,7 +133,7 @@ export function AddToCartButton({ variantId, maxQuantity }: AddToCartButtonProps
           if (notSelected || loading) return;
           const btn = e.currentTarget as HTMLButtonElement;
           btn.style.background = "#f5f4f0";
-          btn.style.color      = "#0a0a0a";
+          btn.style.color      = "#0c0c0c";
           btn.style.outline    = "none";
         }}
       >

@@ -72,7 +72,7 @@ export default function HomePage() {
             t("ticker.freeShipping"),
             t("ticker.tagline"),
           ].map((text, i) => (
-            <span key={i} className="text-[11px] tracking-[3px] uppercase text-[#0a0a0a] mx-12 font-[family-name:var(--font-sans)]">
+            <span key={i} className="text-[11px] tracking-[3px] uppercase text-[#0c0c0c] mx-12 font-[family-name:var(--font-sans)]">
               {text}
             </span>
           ))}
@@ -112,7 +112,7 @@ export default function HomePage() {
       {/* Editorial */}
       <ScrollReveal>
       <section className="grid grid-cols-1 lg:grid-cols-2 min-h-[320px] lg:min-h-[480px]">
-        <div className="bg-[#0a0a0a] flex items-center justify-center min-h-[320px] lg:min-h-[480px] relative overflow-hidden">
+        <div className="bg-[#0c0c0c] flex items-center justify-center min-h-[320px] lg:min-h-[480px] relative overflow-hidden">
           <img src="/models/2fc3142ca3fb6c48df6cc4be95480944item.JPG" alt="Editorial" className="absolute inset-0 w-full h-full object-cover opacity-70" />
           <span className="absolute top-6 lg:top-12 left-6 lg:left-12 text-[10px] tracking-[3px] uppercase text-white/50 font-[family-name:var(--font-sans)] z-10">
             {t("editorial.number")}
@@ -134,7 +134,7 @@ export default function HomePage() {
             {t("editorial.desc")}
           </p>
           <Link href="/products?sort=newest" className="self-start">
-            <button className="bg-white text-[#0a0a0a] px-10 py-4 font-[family-name:var(--font-sans)] text-[11px] tracking-[2px] uppercase border-0 cursor-pointer transition-all duration-200 hover:bg-[#d4d2cc]">
+            <button className="bg-white text-[#0c0c0c] px-10 py-4 font-[family-name:var(--font-sans)] text-[11px] tracking-[2px] uppercase border-0 cursor-pointer transition-all duration-200 hover:bg-[#d4d2cc]">
               {t("editorial.cta")}
             </button>
           </Link>
@@ -150,7 +150,7 @@ export default function HomePage() {
             <p className="text-[10px] tracking-[4px] uppercase text-[#888] mb-3 font-[family-name:var(--font-sans)]">
               {t("sections.byCategory")}
             </p>
-            <h2 className="font-[family-name:var(--font-heading)] text-[clamp(32px,4vw,52px)] tracking-[-1.5px] leading-none text-[#0a0a0a]">
+            <h2 className="font-[family-name:var(--font-heading)] text-[clamp(32px,4vw,52px)] tracking-[-1.5px] leading-none text-[#0c0c0c]">
               {t("sections.explore")}
             </h2>
           </div>
