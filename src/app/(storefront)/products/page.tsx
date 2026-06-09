@@ -67,24 +67,24 @@ export default async function ProductsPage({ searchParams }: ProductsPageProps) 
   const totalPages = Math.ceil(totalCount / ITEMS_PER_PAGE);
 
   return (
-    // ── Dark background — full page ──────────────────────────────────────────
-    <div className="pt-[60px]" style={{ background: "#0c0c0c", minHeight: "100vh" }}>
+    // ── Light background — matches homepage ──────────────────────────────────
+    <div className="pt-[60px]" style={{ background: "#f5f4f0", minHeight: "100vh" }}>
 
       {/* ── Page header ─────────────────────────────────────────────────────── */}
       <div
         className="px-6 lg:px-14 py-16 lg:py-20"
-        style={{ borderBottom: "0.5px solid rgba(245,244,240,0.06)" }}
+        style={{ borderBottom: "0.5px solid rgba(10,10,10,0.08)" }}
       >
         {/* Label */}
         <p
           className="font-[family-name:var(--font-sans)] mb-5"
-          style={{ fontSize: "8px", letterSpacing: "5px", textTransform: "uppercase", color: "#b5a48a" }}
+          style={{ fontSize: "8px", letterSpacing: "5px", textTransform: "uppercase", color: "#8a7f6e" }}
         >
           {query ? "Search Results" : "SS 2026"}
         </p>
 
         {/* Gold hairline */}
-        <div className="w-6 h-px mb-6" style={{ background: "rgba(181,164,138,0.5)" }} />
+        <div className="w-6 h-px mb-6" style={{ background: "rgba(139,123,98,0.5)" }} />
 
         <div className="flex items-end justify-between">
           {/* Heading — Cormorant, large, tracking tight */}
@@ -95,7 +95,7 @@ export default async function ProductsPage({ searchParams }: ProductsPageProps) 
               letterSpacing: "-2.5px",
               lineHeight: 0.95,
               fontWeight: 300,
-              color: "rgba(245,244,240,0.9)",
+              color: "#0c0c0c",
             }}
           >
             {query ? `"${query}"` : "The Collection"}
@@ -104,7 +104,7 @@ export default async function ProductsPage({ searchParams }: ProductsPageProps) 
           {/* Count — bottom-right, small */}
           <span
             className="font-[family-name:var(--font-sans)] hidden sm:block mb-1"
-            style={{ fontSize: "9px", letterSpacing: "2.5px", textTransform: "uppercase", color: "rgba(245,244,240,0.2)" }}
+            style={{ fontSize: "9px", letterSpacing: "2.5px", textTransform: "uppercase", color: "rgba(10,10,10,0.3)" }}
           >
             {totalCount} {totalCount === 1 ? "piece" : "pieces"}
           </span>
@@ -131,13 +131,13 @@ export default async function ProductsPage({ searchParams }: ProductsPageProps) 
             <div className="flex flex-col items-center justify-center py-40">
               <p
                 className="font-[family-name:var(--font-heading)] mb-4"
-                style={{ fontSize: "clamp(28px,4vw,46px)", letterSpacing: "-1.5px", color: "rgba(245,244,240,0.1)" }}
+                style={{ fontSize: "clamp(28px,4vw,46px)", letterSpacing: "-1.5px", color: "rgba(10,10,10,0.08)" }}
               >
                 Nothing found
               </p>
               <p
                 className="font-[family-name:var(--font-sans)]"
-                style={{ fontSize: "9px", letterSpacing: "3px", textTransform: "uppercase", color: "rgba(245,244,240,0.2)" }}
+                style={{ fontSize: "9px", letterSpacing: "3px", textTransform: "uppercase", color: "rgba(10,10,10,0.25)" }}
               >
                 Try a different search or filter
               </p>

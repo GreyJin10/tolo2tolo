@@ -40,21 +40,21 @@ export function Pagination({ currentPage, totalPages }: PaginationProps) {
     padding:       "10px 14px",
     transition:    "all 0.3s",
     textTransform: "uppercase" as const,
-    color:         "rgba(245,244,240,0.3)",
+    color:         "rgba(10,10,10,0.3)",
   };
 
   return (
     <nav
       className="flex items-center justify-center gap-1 mt-16 mb-4"
-      style={{ borderTop: "0.5px solid rgba(245,244,240,0.06)", paddingTop: "40px" }}
+      style={{ borderTop: "0.5px solid rgba(10,10,10,0.08)", paddingTop: "40px" }}
     >
       {/* Prev */}
       <button
         onClick={() => goToPage(currentPage - 1)}
         disabled={currentPage <= 1}
         style={{ ...btnBase, opacity: currentPage <= 1 ? 0.2 : 1, marginRight: "16px" }}
-        onMouseEnter={(e) => { if (currentPage > 1) (e.currentTarget as HTMLButtonElement).style.color = "#f5f4f0"; }}
-        onMouseLeave={(e) => { (e.currentTarget as HTMLButtonElement).style.color = "rgba(245,244,240,0.3)"; }}
+        onMouseEnter={(e) => { if (currentPage > 1) (e.currentTarget as HTMLButtonElement).style.color = "#0c0c0c"; }}
+        onMouseLeave={(e) => { (e.currentTarget as HTMLButtonElement).style.color = "rgba(10,10,10,0.3)"; }}
       >
         ← Prev
       </button>
@@ -71,15 +71,15 @@ export function Pagination({ currentPage, totalPages }: PaginationProps) {
             onClick={() => goToPage(page as number)}
             style={{
               ...btnBase,
-              color:   page === currentPage ? "#b5a48a" : "rgba(245,244,240,0.3)",
-              outline: page === currentPage ? "0.5px solid rgba(181,164,138,0.4)" : "none",
+              color:   page === currentPage ? "#8a7f6e" : "rgba(10,10,10,0.3)",
+              outline: page === currentPage ? "0.5px solid rgba(139,123,98,0.4)" : "none",
             }}
             onMouseEnter={(e) => {
-              if (page !== currentPage) (e.currentTarget as HTMLButtonElement).style.color = "rgba(245,244,240,0.8)";
+              if (page !== currentPage) (e.currentTarget as HTMLButtonElement).style.color = "#0c0c0c";
             }}
             onMouseLeave={(e) => {
               (e.currentTarget as HTMLButtonElement).style.color =
-                page === currentPage ? "#b5a48a" : "rgba(245,244,240,0.3)";
+                page === currentPage ? "#8a7f6e" : "rgba(10,10,10,0.3)";
             }}
           >
             {String(page as number).padStart(2, "0")}
@@ -92,8 +92,8 @@ export function Pagination({ currentPage, totalPages }: PaginationProps) {
         onClick={() => goToPage(currentPage + 1)}
         disabled={currentPage >= totalPages}
         style={{ ...btnBase, opacity: currentPage >= totalPages ? 0.2 : 1, marginLeft: "16px" }}
-        onMouseEnter={(e) => { if (currentPage < totalPages) (e.currentTarget as HTMLButtonElement).style.color = "#f5f4f0"; }}
-        onMouseLeave={(e) => { (e.currentTarget as HTMLButtonElement).style.color = "rgba(245,244,240,0.3)"; }}
+        onMouseEnter={(e) => { if (currentPage < totalPages) (e.currentTarget as HTMLButtonElement).style.color = "#0c0c0c"; }}
+        onMouseLeave={(e) => { (e.currentTarget as HTMLButtonElement).style.color = "rgba(10,10,10,0.3)"; }}
       >
         Next →
       </button>

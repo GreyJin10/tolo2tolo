@@ -36,7 +36,7 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
   }
 
   return (
-    <div className="pt-16">
+    <div className="pt-16" style={{ background: "#f5f4f0", minHeight: "100vh" }}>
       {/* Page header */}
       <div className="px-4 lg:px-12 py-12 lg:py-16 border-b border-[#0c0c0c]/8">
         <p className="text-[10px] tracking-[4px] uppercase text-[#888] mb-3 font-[family-name:var(--font-sans)]">
