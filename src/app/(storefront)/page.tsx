@@ -240,16 +240,17 @@ export default function HomePage() {
           subtitle="SS 2026 Editorial — Click to expand"
           href="/products?sort=newest"
         />
-        {/* Featured hero image — spans full width on mobile, 2/3 on desktop */}
+        {/* Featured hero image — full width, natural crop */}
         <div
           className="mb-[2px] relative group cursor-pointer overflow-hidden"
-          style={{ aspectRatio: "16/7" }}
+          style={{ maxHeight: "70vh" }}
           onClick={() => { setLightboxIndex(0); setLightboxOpen(true); }}
         >
           <img
             src={LOOKBOOK_IMAGES[0]}
             alt="Lookbook feature"
-            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.02]"
+            className="w-full object-cover transition-transform duration-700 group-hover:scale-[1.02]"
+            style={{ maxHeight: "70vh" }}
           />
           <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-400" />
           <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
