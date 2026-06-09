@@ -8,18 +8,29 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 
+// ── Collapsed to 3 top-level items ──────────────────────────────────────────
 const NAV_LINKS = [
-  { label: "Shop", href: "/products" },
-  { label: "Tops", href: "/categories/tops" },
-  { label: "Dresses", href: "/categories/dresses" },
-  { label: "Bottoms", href: "/categories/bottoms" },
-  { label: "Outerwear", href: "/categories/outerwear" },
+  { label: "Collection", href: "/products" },
+  { label: "Editorial",  href: "/products?sort=featured" },
+  { label: "About",      href: "#" },
+];
+
+// Full category list lives in the mobile drawer only
+const DRAWER_LINKS = [
+  { label: "All Pieces",  href: "/products" },
+  { label: "New Arrivals",href: "/products?sort=newest" },
+  { label: "Tops",        href: "/categories/tops" },
+  { label: "Dresses",     href: "/categories/dresses" },
+  { label: "Bottoms",     href: "/categories/bottoms" },
+  { label: "Outerwear",   href: "/categories/outerwear" },
+  { label: "Editorial",   href: "/products?sort=featured" },
+  { label: "About",       href: "#" },
 ];
 
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [searchOpen, setSearchOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
+  const [searchOpen,     setSearchOpen]     = useState(false);
+  const [scrolled,       setScrolled]       = useState(false);
   const cartCount = useCartCount();
 
   useEffect(() => {
@@ -31,62 +42,49 @@ export function Header() {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 w-full">
       <nav
-        className={`flex items-center justify-between px-6 lg:px-12 h-16 transition-all duration-500 ${
+        className={`flex items-center justify-between px-6 lg:px-14 h-[60px] transition-all duration-700 ${
           scrolled
-            ? "bg-[#f5f4f0]/92 backdrop-blur-md border-b border-black/8"
+            ? "bg-[#0a0a0a]/95 backdrop-blur-md border-b border-white/[0.06]"
             : "bg-transparent border-b border-transparent"
         }`}
       >
-        {/* Logo */}
-        <div className="flex items-center">
-          <Link
-            href="/"
-            className={`font-[family-name:var(--font-heading)] text-[19px] tracking-[4px] transition-all duration-500 hover:opacity-60 border px-3 py-1 inline-block ${
-              scrolled
-                ? "text-[#0a0a0a] border-[#0a0a0a]/30"
-                : "text-white border-white/30"
-            }`}
-          >
-            <span>TOLO</span>
-            <span className="mx-[3px] opacity-35 font-light">2</span>
-            <span>TOLO</span>
-          </Link>
-          <span
-            className={`hidden lg:block h-4 w-px mx-6 transition-colors duration-500 ${
-              scrolled ? "bg-[#0a0a0a]/15" : "bg-white/20"
-            }`}
-          />
-        </div>
+        {/* ── Logo — no border box ─────────────────────────── */}
+        <Link
+          href="/"
+          className="font-[family-name:var(--font-heading)] text-[15px] tracking-[7px] text-white/90 hover:text-white/40 transition-all duration-700 uppercase select-none"
+        >
+          Tolo
+          <span className="mx-[4px] opacity-20 font-light" style={{ fontSize: "10px", letterSpacing: "2px" }}>×</span>
+          Tolo
+        </Link>
 
-        {/* Desktop nav */}
-        <ul className="hidden lg:flex items-center gap-10">
+        {/* ── Desktop nav — 3 items, absolutely centered ──── */}
+        <ul className="hidden lg:flex items-center gap-12 absolute left-1/2 -translate-x-1/2">
           {NAV_LINKS.map((link) => (
             <li key={link.href}>
               <Link
                 href={link.href}
-                className={`text-[11px] tracking-[2.5px] uppercase transition-all duration-300 hover:opacity-100 relative group ${
-                  scrolled ? "text-[#0a0a0a]/55" : "text-white/60"
-                }`}
+                className="group relative font-[family-name:var(--font-sans)] transition-all duration-500"
+                style={{ fontSize: "9px", letterSpacing: "3.5px", textTransform: "uppercase", color: "rgba(245,244,240,0.35)" }}
+                onMouseEnter={(e) => { (e.currentTarget as HTMLAnchorElement).style.color = "rgba(245,244,240,0.9)"; }}
+                onMouseLeave={(e) => { (e.currentTarget as HTMLAnchorElement).style.color = "rgba(245,244,240,0.35)"; }}
               >
                 {link.label}
-                <span className="absolute -bottom-0.5 left-0 w-0 h-px bg-current transition-all duration-300 group-hover:w-full" />
+                <span className="absolute -bottom-0.5 left-0 w-0 h-px bg-[#b5a48a]/60 transition-all duration-500 group-hover:w-full" />
               </Link>
             </li>
           ))}
         </ul>
 
-        {/* Right */}
-        <div className="flex items-center gap-2">
+        {/* ── Right icons ──────────────────────────────────── */}
+        <div className="flex items-center gap-1">
           {searchOpen ? (
             <div className="flex items-center gap-2">
               <Input
                 type="search"
-                placeholder="Search..."
-                className={`w-[180px] sm:w-[220px] h-8 text-[11px] tracking-[1px] border rounded-none bg-transparent ${
-                  scrolled
-                    ? "border-black/25 text-[#0a0a0a]"
-                    : "border-white/30 text-white placeholder:text-white/40"
-                }`}
+                placeholder="Search"
+                className="w-[160px] sm:w-[200px] h-7 rounded-none bg-transparent border-0 border-b border-white/20 text-white placeholder:text-white/20 focus-visible:ring-0 focus-visible:border-white/50 font-[family-name:var(--font-sans)]"
+                style={{ fontSize: "10px", letterSpacing: "1.5px" }}
                 autoFocus
                 onBlur={() => setSearchOpen(false)}
                 onKeyDown={(e) => {
@@ -96,90 +94,86 @@ export function Header() {
                   }
                 }}
               />
-              <Button
-                variant="ghost"
-                size="icon"
-                className={`h-8 w-8 ${scrolled ? "text-[#0a0a0a]/60" : "text-white/60"}`}
-                onClick={() => setSearchOpen(false)}
-              >
-                <X className="h-4 w-4" />
+              <Button variant="ghost" size="icon" className="h-7 w-7 text-white/30 hover:text-white hover:bg-transparent" onClick={() => setSearchOpen(false)}>
+                <X className="h-3.5 w-3.5" />
               </Button>
             </div>
           ) : (
-            <Button
-              variant="ghost"
-              size="icon"
-              className={`h-8 w-8 transition-colors ${
-                scrolled
-                  ? "text-[#0a0a0a]/50 hover:text-[#0a0a0a]"
-                  : "text-white/50 hover:text-white"
-              }`}
-              onClick={() => setSearchOpen(true)}
-            >
-              <Search className="h-[15px] w-[15px]" />
+            <Button variant="ghost" size="icon" className="h-8 w-8 text-white/30 hover:text-white hover:bg-transparent transition-colors duration-300" onClick={() => setSearchOpen(true)}>
+              <Search className="h-[14px] w-[14px]" />
             </Button>
           )}
 
           <Link href="/auth/login" className="hidden sm:inline-flex">
-            <Button
-              variant="ghost"
-              size="icon"
-              className={`h-8 w-8 transition-colors ${
-                scrolled
-                  ? "text-[#0a0a0a]/50 hover:text-[#0a0a0a]"
-                  : "text-white/50 hover:text-white"
-              }`}
-            >
-              <User className="h-[15px] w-[15px]" />
+            <Button variant="ghost" size="icon" className="h-8 w-8 text-white/30 hover:text-white hover:bg-transparent transition-colors duration-300">
+              <User className="h-[14px] w-[14px]" />
             </Button>
           </Link>
 
+          {/* Bag — plain text, no border box */}
           <Link href="/cart">
             <button
-              className={`text-[10px] tracking-[3px] uppercase cursor-pointer border px-4 py-1.5 bg-transparent font-[family-name:var(--font-sans)] transition-all duration-300 ${
-                scrolled
-                  ? "border-[#0a0a0a] text-[#0a0a0a] hover:bg-[#0a0a0a] hover:text-[#f5f4f0]"
-                  : "border-white/50 text-white/80 hover:border-white hover:text-white"
-              }`}
+              className="font-[family-name:var(--font-sans)] ml-3 transition-colors duration-500 bg-transparent border-0 cursor-pointer"
+              style={{ fontSize: "9px", letterSpacing: "3.5px", textTransform: "uppercase", color: "rgba(245,244,240,0.35)" }}
+              onMouseEnter={(e) => { (e.currentTarget as HTMLButtonElement).style.color = "rgba(245,244,240,0.9)"; }}
+              onMouseLeave={(e) => { (e.currentTarget as HTMLButtonElement).style.color = "rgba(245,244,240,0.35)"; }}
             >
-              Bag{cartCount > 0 && ` (${cartCount})`}
+              {cartCount > 0 ? `Bag (${cartCount})` : "Bag"}
             </button>
           </Link>
 
+          {/* Mobile hamburger — right side drawer */}
           <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
             <SheetTrigger
-              className={`lg:hidden ml-1 flex flex-col gap-[5px] p-2 transition-colors ${
-                scrolled ? "text-[#0a0a0a]" : "text-white"
-              }`}
+              className="lg:hidden ml-3 flex flex-col gap-[5px] p-2 text-white/40 hover:text-white transition-colors duration-300"
               aria-label="Menu"
             >
-              <span className="block w-5 h-px bg-current" />
-              <span className="block w-3.5 h-px bg-current" />
-              <span className="block w-5 h-px bg-current" />
+              <span className="block w-[18px] h-px bg-current" />
+              <span className="block w-[12px] h-px bg-current" />
             </SheetTrigger>
-            <SheetContent side="left" className="w-[300px] bg-[#f5f4f0] border-r border-black/8 p-0">
+
+            {/* Drawer — opens from RIGHT, dark ─────────────── */}
+            <SheetContent side="right" className="w-[300px] bg-[#0a0a0a] border-l border-white/[0.06] p-0">
               <div className="flex flex-col h-full">
-                <div className="px-8 pt-10 pb-6 border-b border-black/8">
-                  <span className="font-[family-name:var(--font-heading)] text-[18px] tracking-[4px] text-[#0a0a0a]">
-                    TOLO<span className="opacity-35">2</span>TOLO
+                {/* Drawer header */}
+                <div className="px-8 pt-10 pb-8" style={{ borderBottom: "0.5px solid rgba(245,244,240,0.06)" }}>
+                  <span
+                    className="font-[family-name:var(--font-heading)] text-white uppercase"
+                    style={{ fontSize: "14px", letterSpacing: "7px" }}
+                  >
+                    Tolo<span style={{ opacity: 0.2, fontSize: "10px", margin: "0 4px" }}>×</span>Tolo
                   </span>
                 </div>
-                <nav className="flex flex-col px-8 py-8 gap-0">
-                  {NAV_LINKS.map((link) => (
+
+                {/* Links */}
+                <nav className="flex flex-col px-8 py-10 gap-0 flex-1">
+                  {DRAWER_LINKS.map((link) => (
                     <Link
-                      key={link.href}
+                      key={link.label + link.href}
                       href={link.href}
-                      className="text-[11px] tracking-[3px] uppercase text-[#0a0a0a]/50 hover:text-[#0a0a0a] transition-colors py-3 border-b border-black/5 last:border-0"
+                      className="font-[family-name:var(--font-sans)] py-3.5 transition-colors duration-300"
+                      style={{
+                        fontSize: "9px",
+                        letterSpacing: "3px",
+                        textTransform: "uppercase",
+                        color: "rgba(245,244,240,0.28)",
+                        borderBottom: "0.5px solid rgba(245,244,240,0.05)",
+                      }}
+                      onMouseEnter={(e) => { (e.currentTarget as HTMLAnchorElement).style.color = "rgba(245,244,240,0.85)"; }}
+                      onMouseLeave={(e) => { (e.currentTarget as HTMLAnchorElement).style.color = "rgba(245,244,240,0.28)"; }}
                       onClick={() => setMobileMenuOpen(false)}
                     >
                       {link.label}
                     </Link>
                   ))}
                 </nav>
-                <div className="mt-auto px-8 pb-10">
+
+                {/* Drawer footer */}
+                <div className="px-8 pb-12" style={{ borderTop: "0.5px solid rgba(245,244,240,0.06)", paddingTop: "24px" }}>
                   <Link
                     href="/auth/login"
-                    className="text-[10px] tracking-[3px] uppercase text-[#0a0a0a]/30 hover:text-[#0a0a0a] transition-colors"
+                    className="font-[family-name:var(--font-sans)] transition-colors duration-300"
+                    style={{ fontSize: "9px", letterSpacing: "3px", textTransform: "uppercase", color: "rgba(245,244,240,0.18)" }}
                     onClick={() => setMobileMenuOpen(false)}
                   >
                     Account
