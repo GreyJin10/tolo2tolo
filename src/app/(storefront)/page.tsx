@@ -7,6 +7,7 @@ import { ProductCard } from "@/components/shared/product-card";
 import { ProductCardSkeleton } from "@/components/shared/product-card-skeleton";
 import { SectionHeader } from "@/components/shared/section-header";
 import { ScrollReveal } from "@/components/shared/scroll-reveal";
+import { LookbookLightbox } from "@/components/shared/lookbook-lightbox";
 import { useLanguage } from "@/components/layout/language-context";
 
 interface ProductData {
@@ -27,12 +28,34 @@ interface CategoryData {
   imageUrl?: string;
 }
 
+const LOOKBOOK_IMAGES = [
+  "/models/图片_20260324134104_35639_2.jpg",
+  "/models/7f245ee79444875906f77c4ba3efd5f6item.JPG",
+  "/models/图片_20260324155417_35726_2.jpg",
+  "/models/f0d70a4cdb34d7d62c35e8b946e5a27ditem.JPG",
+  "/models/图片_20260324134114_35647_2.jpg",
+  "/models/9dbe507cd0293950694bb0b70a2ed6d8item.JPG",
+  "/models/图片_20260324134107_35642_2.jpg",
+  "/models/292859item.JPG",
+  "/models/图片_20260324134119_35649_2.jpg",
+  "/models/a020ecb8dcfb816ac5ba44361e7a4b6bitem.JPG",
+  "/models/图片_20260324134112_35646_2.jpg",
+  "/models/图片_20260324134110_35644_2.jpg",
+  "/models/图片_20260324134056_35633_2.jpg",
+  "/models/图片_20260324134053_35631_2.jpg",
+  "/models/图片_20260324155415_35725_2.jpg",
+  "/models/图片_20260324155418_35727_2.jpg",
+  "/models/6871c4873u719423c7ca0d7fa083737aitem.JPG",
+];
+
 export default function HomePage() {
   const { t } = useLanguage();
   const [newArrivals, setNewArrivals] = useState<ProductData[]>([]);
   const [featuredProducts, setFeaturedProducts] = useState<ProductData[]>([]);
   const [categories, setCategories] = useState<CategoryData[]>([]);
   const [loaded, setLoaded] = useState(false);
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [lightboxIndex, setLightboxIndex] = useState(0);
 
   useEffect(() => {
     async function fetchData() {
@@ -209,42 +232,41 @@ export default function HomePage() {
       <section className="px-4 lg:px-12 py-16 lg:py-[120px] bg-[#f5f4f0]">
         <SectionHeader
           title="The Lookbook"
-          subtitle="SS 2026 Editorial"
+          subtitle="SS 2026 Editorial — Click to expand"
           href="/products?sort=newest"
         />
         <div className="columns-2 lg:columns-3 gap-[2px]">
-          {[
-            "/models/图片_20260324134104_35639_2.jpg",
-            "/models/7f245ee79444875906f77c4ba3efd5f6item.JPG",
-            "/models/图片_20260324155417_35726_2.jpg",
-            "/models/f0d70a4cdb34d7d62c35e8b946e5a27ditem.JPG",
-            "/models/图片_20260324134114_35647_2.jpg",
-            "/models/9dbe507cd0293950694bb0b70a2ed6d8item.JPG",
-            "/models/图片_20260324134107_35642_2.jpg",
-            "/models/292859item.JPG",
-            "/models/图片_20260324134119_35649_2.jpg",
-            "/models/a020ecb8dcfb816ac5ba44361e7a4b6bitem.JPG",
-            "/models/图片_20260324134112_35646_2.jpg",
-            "/models/图片_20260324134110_35644_2.jpg",
-            "/models/图片_20260324134056_35633_2.jpg",
-            "/models/图片_20260324134053_35631_2.jpg",
-            "/models/图片_20260324155415_35725_2.jpg",
-            "/models/图片_20260324155418_35727_2.jpg",
-            "/models/6871c4873u719423c7ca0d7fa083737aitem.JPG",
-          ].map((src, i) => (
-            <div key={src} className="break-inside-avoid mb-[2px] relative group cursor-pointer overflow-hidden">
+          {LOOKBOOK_IMAGES.map((src, i) => (
+            <div
+              key={src}
+              className="break-inside-avoid mb-[2px] relative group cursor-pointer overflow-hidden"
+              onClick={() => { setLightboxIndex(i); setLightboxOpen(true); }}
+            >
               <img
                 src={src}
                 alt={`Lookbook ${i + 1}`}
                 className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105"
                 loading="lazy"
               />
-              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/15 transition-colors duration-400" />
+              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-400" />
+              <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <span className="font-[family-name:var(--font-sans)] bg-black/40 backdrop-blur-sm text-white/80 px-4 py-2 tracking-[3px] uppercase" style={{ fontSize: "9px", letterSpacing: "3px" }}>
+                  View
+                </span>
+              </div>
             </div>
           ))}
         </div>
       </section>
       </ScrollReveal>
+
+      {/* Lookbook Lightbox */}
+      <LookbookLightbox
+        images={LOOKBOOK_IMAGES}
+        isOpen={lightboxOpen}
+        initialIndex={lightboxIndex}
+        onClose={() => setLightboxOpen(false)}
+      />
     </div>
   );
 }
