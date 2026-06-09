@@ -43,14 +43,15 @@ export function HeroCarousel() {
         />
       ))}
 
-      {/* Logo — permeates the entire hero, vast atmospheric backdrop */}
+      {/* Logo — text-only via multiply blend, white background becomes invisible */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-[3] overflow-hidden">
         <img
           src="/logo-mark.jpg"
           alt=""
-          className="w-[clamp(400px,85vw,900px)] h-auto opacity-[0.045] select-none"
+          className="w-[clamp(360px,70vw,750px)] h-auto select-none"
           style={{
-            filter: "brightness(1.1)",
+            opacity: 0.15,
+            mixBlendMode: "multiply" as React.CSSProperties["mixBlendMode"],
             animation: "logoBreathe 10s ease-in-out infinite",
           }}
         />
