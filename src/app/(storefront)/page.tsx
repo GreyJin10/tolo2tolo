@@ -167,7 +167,7 @@ export default function HomePage() {
 
       {/* Logo mark — brand breathing point */}
       <div className="flex justify-center py-16 lg:py-20 bg-[#f5f4f0]">
-        <img src="/logo-mark.jpg" alt="TOLO2TOLO" className="h-14 lg:h-20 w-auto opacity-[0.10] grayscale" />
+        <img src="/logo-mark.jpg" alt="TOLO2TOLO" className="h-24 lg:h-36 w-auto opacity-[0.08] grayscale" />
       </div>
 
       {/* Category Row */}
