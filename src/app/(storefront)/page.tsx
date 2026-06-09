@@ -235,16 +235,36 @@ export default function HomePage() {
           subtitle="SS 2026 Editorial — Click to expand"
           href="/products?sort=newest"
         />
+        {/* Featured hero image — spans full width on mobile, 2/3 on desktop */}
+        <div
+          className="mb-[2px] relative group cursor-pointer overflow-hidden"
+          style={{ aspectRatio: "16/7" }}
+          onClick={() => { setLightboxIndex(0); setLightboxOpen(true); }}
+        >
+          <img
+            src={LOOKBOOK_IMAGES[0]}
+            alt="Lookbook feature"
+            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.02]"
+          />
+          <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-400" />
+          <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <span className="font-[family-name:var(--font-sans)] bg-black/40 backdrop-blur-sm text-white/80 px-5 py-2.5 tracking-[3px] uppercase" style={{ fontSize: "9px", letterSpacing: "3px" }}>
+              View Lookbook
+            </span>
+          </div>
+        </div>
+
+        {/* Remaining images — masonry columns */}
         <div className="columns-2 lg:columns-3 gap-[2px]">
-          {LOOKBOOK_IMAGES.map((src, i) => (
+          {LOOKBOOK_IMAGES.slice(1).map((src, i) => (
             <div
               key={src}
               className="break-inside-avoid mb-[2px] relative group cursor-pointer overflow-hidden"
-              onClick={() => { setLightboxIndex(i); setLightboxOpen(true); }}
+              onClick={() => { setLightboxIndex(i + 1); setLightboxOpen(true); }}
             >
               <img
                 src={src}
-                alt={`Lookbook ${i + 1}`}
+                alt={`Lookbook ${i + 2}`}
                 className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105"
                 loading="lazy"
               />
