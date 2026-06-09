@@ -165,10 +165,15 @@ export default function HomePage() {
       </section>
       </ScrollReveal>
 
+      {/* Logo mark — brand breathing point */}
+      <div className="flex justify-center py-16 lg:py-20 bg-[#f5f4f0]">
+        <img src="/logo-mark.jpg" alt="TOLO2TOLO" className="h-6 lg:h-7 w-auto opacity-20 grayscale" />
+      </div>
+
       {/* Category Row */}
       {loaded && categories.length > 0 && (
         <ScrollReveal delay={100}>
-        <section className="px-4 lg:px-12 py-16 lg:py-20 bg-[#f5f4f0]">
+        <section className="px-4 lg:px-12 pb-16 lg:pb-20 bg-[#f5f4f0]">
           <div className="mb-12">
             <p className="text-[10px] tracking-[4px] uppercase text-[#888] mb-3 font-[family-name:var(--font-sans)]">
               {t("sections.byCategory")}

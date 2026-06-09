@@ -30,13 +30,8 @@ export function Footer() {
       <div className="px-6 lg:px-12 py-20 grid grid-cols-1 lg:grid-cols-[1.2fr_1fr_1fr_1.1fr] gap-12 lg:gap-16">
         {/* Left — brand */}
         <div>
-          <Link
-            href="/"
-            className="font-[family-name:var(--font-heading)] text-[19px] tracking-[4px] border border-[#f5f4f0]/30 px-3 py-1 inline-block hover:opacity-60 transition-opacity text-[#f5f4f0]"
-          >
-            <span>TOLO</span>
-            <span className="mx-[3px] opacity-35 font-light">2</span>
-            <span>TOLO</span>
+          <Link href="/" className="inline-block hover:opacity-60 transition-opacity">
+            <img src="/logo-mark.jpg" alt="TOLO2TOLO" className="h-10 w-auto" style={{ filter: "invert(1)" }} />
           </Link>
           <p className="text-[10px] tracking-[3px] uppercase text-white/25 mt-4 leading-relaxed font-[family-name:var(--font-sans)]">
             Minimal. Essential. Intentional.
