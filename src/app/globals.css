@@ -182,6 +182,12 @@
   100% { transform: translateY(250%); opacity: 0; }
 }
 
+/* Logo subtle breathe */
+@keyframes logoBreathe {
+  0%, 100% { transform: scale(1); }
+  50%      { transform: scale(1.04); }
+}
+
 /* Fade up — for section entrances */
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(24px); }

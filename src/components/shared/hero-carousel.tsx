@@ -43,13 +43,16 @@ export function HeroCarousel() {
         />
       ))}
 
-      {/* Logo watermark — centered, ultra-subtle */}
-      <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-[5]">
+      {/* Logo — massive atmospheric backdrop, slow breathe */}
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-[3] overflow-hidden">
         <img
           src="/logo-mark.jpg"
-          alt="TOLO2TOLO"
-          className="w-[clamp(140px,18vw,220px)] h-auto opacity-[0.07] mix-blend-luminosity select-none"
-          style={{ filter: "brightness(1.5)" }}
+          alt=""
+          className="w-[clamp(280px,55vw,600px)] h-auto opacity-[0.05] select-none"
+          style={{
+            filter: "brightness(1.2)",
+            animation: "logoBreathe 8s ease-in-out infinite",
+          }}
         />
       </div>
 
