@@ -1,21 +1,26 @@
 "use client";
 
-import { Badge } from "@/components/ui/badge";
+// ─────────────────────────────────────────────────────────────────────────────
+// VariantSelector — dark luxury edition
+//  • Color: pill buttons with swatch dot + name, gold selected state
+//  • Size: minimal ghost buttons, gold active underline
+//  • Stock indicator: styled to brand (no orange/green Tailwind colors)
+// ─────────────────────────────────────────────────────────────────────────────
 
 interface Variant {
-  id: string;
-  size: string;
-  color: string;
+  id:        string;
+  size:      string;
+  color:     string;
   colorName: string | null;
-  stock: number;
-  price: number | null;
+  stock:     number;
+  price:     number | null;
 }
 
 interface VariantSelectorProps {
-  variants: Variant[];
-  selectedSize: string | null;
+  variants:      Variant[];
+  selectedSize:  string | null;
   selectedColor: string | null;
-  onSizeChange: (size: string) => void;
+  onSizeChange:  (size: string)  => void;
   onColorChange: (color: string) => void;
 }
 
@@ -26,52 +31,71 @@ export function VariantSelector({
   onSizeChange,
   onColorChange,
 }: VariantSelectorProps) {
-  // Get unique sizes and colors
-  const sizes = Array.from(new Set(variants.map((v) => v.size)));
+  const sizes  = Array.from(new Set(variants.map((v) => v.size)));
   const colors = Array.from(
     new Map(variants.map((v) => [v.color, { color: v.color, name: v.colorName }])).values()
   );
 
-  // Find selected variant
   const selectedVariant = variants.find(
     (v) => v.size === selectedSize && v.color === selectedColor
   );
 
   return (
-    <div className="space-y-6">
-      {/* Color selector */}
+    <div className="space-y-8">
+
+      {/* ── Color ──────────────────────────────────────────────────────── */}
       <div>
-        <h3 className="text-sm font-medium mb-3">
-          Color{" "}
+        <div
+          className="flex items-center justify-between mb-4 font-[family-name:var(--font-sans)]"
+          style={{ fontSize: "8px", letterSpacing: "3px", textTransform: "uppercase" }}
+        >
+          <span style={{ color: "rgba(245,244,240,0.3)" }}>Colour</span>
           {selectedColor && (
-            <span className="text-muted-foreground font-normal">
-              — {colors.find((c) => c.color === selectedColor)?.name || selectedColor}
+            <span style={{ color: "rgba(181,164,138,0.8)" }}>
+              {colors.find((c) => c.color === selectedColor)?.name || selectedColor}
             </span>
           )}
-        </h3>
+        </div>
+
         <div className="flex flex-wrap gap-2">
           {colors.map((c) => {
             const isAvailable = variants.some(
-              (v) =>
-                v.color === c.color &&
-                v.stock > 0 &&
-                (!selectedSize || v.size === selectedSize)
+              (v) => v.color === c.color && v.stock > 0 && (!selectedSize || v.size === selectedSize)
             );
+            const isSelected  = selectedColor === c.color;
+
             return (
               <button
                 key={c.color}
-                onClick={() => onColorChange(c.color)}
+                onClick={() => isAvailable && onColorChange(c.color)}
                 disabled={!isAvailable}
-                className={`inline-flex items-center gap-2 px-4 py-2.5 min-w-[80px] min-h-[44px] text-[11px] tracking-[1px] font-[family-name:var(--font-sans)] border transition-all duration-200 ${
-                  selectedColor === c.color
-                    ? "bg-[#0a0a0a] text-white border-[#0a0a0a]"
-                    : "bg-transparent text-[#0a0a0a]/70 border-[#0a0a0a]/20 hover:border-[#0a0a0a]/50"
-                } ${!isAvailable ? "opacity-25 cursor-not-allowed line-through" : "cursor-pointer active:scale-95"}`}
                 title={c.name || c.color}
+                className="relative flex items-center gap-2.5 transition-all duration-300 font-[family-name:var(--font-sans)]"
+                style={{
+                  padding:     "8px 14px 8px 10px",
+                  border:      isSelected
+                    ? "0.5px solid rgba(181,164,138,0.8)"
+                    : "0.5px solid rgba(245,244,240,0.1)",
+                  background:  isSelected ? "rgba(181,164,138,0.08)" : "transparent",
+                  color:       isSelected ? "#b5a48a" : "rgba(245,244,240,0.4)",
+                  opacity:     isAvailable ? 1 : 0.2,
+                  cursor:      isAvailable ? "pointer" : "not-allowed",
+                  fontSize:    "9px",
+                  letterSpacing: "2px",
+                  textTransform: "uppercase",
+                  textDecoration: !isAvailable ? "line-through" : "none",
+                }}
               >
+                {/* Color swatch */}
                 <span
-                  className="w-3.5 h-3.5 rounded-full border border-[#0a0a0a]/20"
-                  style={{ backgroundColor: c.color }}
+                  style={{
+                    width:        "10px",
+                    height:       "10px",
+                    borderRadius: "50%",
+                    background:   c.color,
+                    border:       "0.5px solid rgba(245,244,240,0.2)",
+                    flexShrink:   0,
+                  }}
                 />
                 {c.name || c.color}
               </button>
@@ -80,34 +104,46 @@ export function VariantSelector({
         </div>
       </div>
 
-      {/* Size selector */}
+      {/* ── Size ───────────────────────────────────────────────────────── */}
       <div>
-        <h3 className="text-sm font-medium mb-3">
-          Size{" "}
+        <div
+          className="flex items-center justify-between mb-4 font-[family-name:var(--font-sans)]"
+          style={{ fontSize: "8px", letterSpacing: "3px", textTransform: "uppercase" }}
+        >
+          <span style={{ color: "rgba(245,244,240,0.3)" }}>Size</span>
           {selectedSize && (
-            <span className="text-muted-foreground font-normal">
-              — {selectedSize}
-            </span>
+            <span style={{ color: "rgba(181,164,138,0.8)" }}>{selectedSize}</span>
           )}
-        </h3>
+        </div>
+
         <div className="flex flex-wrap gap-2">
           {sizes.map((size) => {
             const isAvailable = variants.some(
-              (v) =>
-                v.size === size &&
-                v.stock > 0 &&
-                (!selectedColor || v.color === selectedColor)
+              (v) => v.size === size && v.stock > 0 && (!selectedColor || v.color === selectedColor)
             );
+            const isSelected  = selectedSize === size;
+
             return (
               <button
                 key={size}
-                onClick={() => onSizeChange(size)}
+                onClick={() => isAvailable && onSizeChange(size)}
                 disabled={!isAvailable}
-                className={`inline-flex items-center justify-center px-4 py-2.5 min-w-[56px] min-h-[44px] text-[11px] tracking-[1px] font-[family-name:var(--font-sans)] border transition-all duration-200 ${
-                  selectedSize === size
-                    ? "bg-[#0a0a0a] text-white border-[#0a0a0a]"
-                    : "bg-transparent text-[#0a0a0a]/70 border-[#0a0a0a]/20 hover:border-[#0a0a0a]/50"
-                } ${!isAvailable ? "opacity-25 cursor-not-allowed line-through" : "cursor-pointer active:scale-95"}`}
+                className="relative font-[family-name:var(--font-sans)] transition-all duration-300"
+                style={{
+                  minWidth:    "48px",
+                  padding:     "10px 16px",
+                  border:      isSelected
+                    ? "0.5px solid rgba(181,164,138,0.8)"
+                    : "0.5px solid rgba(245,244,240,0.1)",
+                  background:  isSelected ? "rgba(181,164,138,0.08)" : "transparent",
+                  color:       isSelected ? "#b5a48a" : "rgba(245,244,240,0.45)",
+                  opacity:     isAvailable ? 1 : 0.2,
+                  cursor:      isAvailable ? "pointer" : "not-allowed",
+                  fontSize:    "9px",
+                  letterSpacing: "2.5px",
+                  textDecoration: !isAvailable ? "line-through" : "none",
+                  textAlign:   "center",
+                }}
               >
                 {size}
               </button>
@@ -116,23 +152,27 @@ export function VariantSelector({
         </div>
       </div>
 
-      {/* Stock indicator */}
+      {/* ── Stock status ───────────────────────────────────────────────── */}
       {selectedVariant && (
-        <div>
+        <div className="font-[family-name:var(--font-sans)]" style={{ fontSize: "8px", letterSpacing: "2.5px", textTransform: "uppercase" }}>
           {selectedVariant.stock > 0 ? (
-            selectedVariant.stock <= 5 ? (
-              <Badge variant="secondary" className="text-orange-600 bg-orange-50">
-                Only {selectedVariant.stock} left
-              </Badge>
+            selectedVariant.stock <= 3 ? (
+              <span style={{ color: "#b5a48a" }}>
+                — Only {selectedVariant.stock} remaining
+              </span>
+            ) : selectedVariant.stock <= 8 ? (
+              <span style={{ color: "rgba(245,244,240,0.3)" }}>
+                — Low stock
+              </span>
             ) : (
-              <Badge variant="secondary" className="text-green-600 bg-green-50">
-                In Stock
-              </Badge>
+              <span style={{ color: "rgba(245,244,240,0.2)" }}>
+                — In stock
+              </span>
             )
           ) : (
-            <Badge variant="secondary" className="text-red-600 bg-red-50">
-              Out of Stock
-            </Badge>
+            <span style={{ color: "rgba(245,244,240,0.2)" }}>
+              — Out of stock
+            </span>
           )}
         </div>
       )}

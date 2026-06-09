@@ -2,6 +2,8 @@
 
 import Link from "next/link";
 import { useState, useEffect } from "react";
+import { TextReveal } from "@/components/shared/text-reveal";
+import { MagneticButton } from "@/components/shared/magnetic-button";
 
 const HERO_IMAGES = [
   "/models/663549c36m04547a7bc48cce89931fd1item.JPG",
@@ -57,21 +59,26 @@ export function HeroCarousel() {
         <p className="text-[10px] tracking-[5px] uppercase text-[#b5a48a] mb-7 font-[family-name:var(--font-sans)]">
           SS 2026 Collection
         </p>
-        <h1 className="font-[family-name:var(--font-heading)] text-[clamp(52px,7vw,88px)] leading-[0.92] text-white mb-8 tracking-[-2px]">
-          Nothing<br />
-          <em className="italic text-[#b5a48a]">Is</em><br />
-          Everything
-        </h1>
+        <TextReveal
+          text="Nothing Is Everything"
+          tag="h1"
+          delay={300}
+          stagger={28}
+          className="font-[family-name:var(--font-heading)] text-white mb-8 block"
+          style={{ fontSize: "clamp(58px,8vw,100px)", letterSpacing: "-3px", fontWeight: 300, lineHeight: 0.9 } as React.CSSProperties}
+        />
         <p className="text-[11px] tracking-[1.5px] text-white/40 leading-[2] mb-8 lg:mb-14 max-w-[340px] font-[family-name:var(--font-sans)]">
           Constructed from silence. Worn with intention.<br />
           Essentials redefined for those who understand restraint.
         </p>
         <div className="flex flex-col sm:flex-row gap-3 sm:gap-5 items-start sm:items-center">
-          <Link href="/products">
-            <button className="bg-white text-[#0a0a0a] px-10 py-[14px] font-[family-name:var(--font-sans)] text-[11px] tracking-[3px] uppercase border-0 cursor-pointer transition-all duration-300 hover:bg-[#b5a48a] hover:text-white">
-              Shop Now
-            </button>
-          </Link>
+          <MagneticButton>
+            <Link href="/products">
+              <button className="bg-white text-[#0a0a0a] px-10 py-[14px] font-[family-name:var(--font-sans)] text-[11px] tracking-[3px] uppercase border-0 cursor-pointer transition-all duration-300 hover:bg-[#b5a48a] hover:text-white">
+                Shop Now
+              </button>
+            </Link>
+          </MagneticButton>
           <Link href="/products?sort=newest">
             <button className="text-[11px] tracking-[2px] uppercase text-white/35 cursor-pointer transition-colors duration-200 hover:text-white bg-transparent border-0 font-[family-name:var(--font-sans)] group flex items-center gap-2">
               View Lookbook

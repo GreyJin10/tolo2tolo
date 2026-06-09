@@ -3,6 +3,8 @@ import { DM_Serif_Display, Space_Mono } from "next/font/google";
 import { Toaster } from "sonner";
 import { Providers } from "@/components/layout/providers";
 import { LanguageProvider } from "@/components/layout/language-context";
+import { CustomCursor } from "@/components/shared/custom-cursor";
+import { PageProgress } from "@/components/shared/page-progress";
 import "./globals.css";
 
 const dmSerifDisplay = DM_Serif_Display({
@@ -48,6 +50,8 @@ export default function RootLayout({
       style={{ "--font-mono": "var(--font-sans)" } as React.CSSProperties}
     >
       <body className="min-h-screen bg-background text-foreground flex flex-col">
+        <CustomCursor />
+        <PageProgress />
         <LanguageProvider>
           <Providers>{children}</Providers>
         </LanguageProvider>

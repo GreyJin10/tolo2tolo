@@ -251,3 +251,11 @@ body.menu-open {
   height: 0.5px;
   background: rgba(181, 164, 138, 0.5);
 }
+
+/* Respect user motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
