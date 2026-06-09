@@ -43,20 +43,6 @@ export function HeroCarousel() {
         />
       ))}
 
-      {/* Logo — text-only via multiply blend, white background becomes invisible */}
-      <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-[3] overflow-hidden">
-        <img
-          src="/logo-mark.jpg"
-          alt=""
-          className="w-[clamp(360px,70vw,750px)] h-auto select-none"
-          style={{
-            opacity: 0.15,
-            mixBlendMode: "multiply" as React.CSSProperties["mixBlendMode"],
-            animation: "logoBreathe 10s ease-in-out infinite",
-          }}
-        />
-      </div>
-
       {/* Subtle grain */}
       <div
         className="absolute inset-0 opacity-[0.025] pointer-events-none"
